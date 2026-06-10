@@ -6,7 +6,7 @@ description: >-
   shader_buffer to render them to shaders.
 
   Fork of audio_flux_fork.
-version: 1.2.2
+version: 0.0.1
 homepage: https://github.com/thomashandlag/audio_flux_fork
 repository: https://github.com/thomashandlag/audio_flux_fork
 topics:
