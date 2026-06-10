@@ -2,12 +2,12 @@ import 'dart:async' show Completer;
 import 'dart:typed_data' show Uint8List;
 import 'dart:ui' as ui;
 
-import 'package:audio_flux/audio_flux.dart';
-import 'package:audio_flux/src/utils/bmp_header.dart';
+import 'package:audio_flux_fork/audio_flux_fork.dart';
+import 'package:audio_flux_fork/src/utils/bmp_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_soloud/flutter_soloud.dart' show AudioData;
-import 'package:shader_buffers/shader_buffers.dart';
+import 'package:shader_buffers_fork/shader_buffers_fork.dart';
 
 /// The shader widget which paints a given custom shader.
 /// It will look at the `params.shaderParams` to get the [ShaderParams].

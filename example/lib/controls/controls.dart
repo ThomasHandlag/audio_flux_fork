@@ -1,4 +1,4 @@
-import 'package:audio_flux/audio_flux.dart';
+import 'package:audio_flux_fork/audio_flux_fork.dart';
 import 'package:example/controls/common_controls.dart';
 import 'package:example/controls/fft_controls.dart';
 import 'package:example/controls/fft_painter_controls.dart';

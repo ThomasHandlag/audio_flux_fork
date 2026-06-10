@@ -3,7 +3,7 @@ A versatile audio visualization package for Flutter that captures and displays r
 ||||
 |-|-|-|
 |![custom_painter](https://github.com/user-attachments/assets/59471aa9-1f53-4920-90cc-7793e17b9eec)|![Dancing Flutter](https://github.com/user-attachments/assets/5e35069f-4dc3-4f49-97b5-0d75bcaaaa74)|![shaders](https://github.com/user-attachments/assets/d69e14f2-23af-4912-8c28-071bdf1d8c62)|
-[web demo](https://marcobavagnoli.com/audio_flux/)
+[web demo](https://marcobavagnoli.com/audio_flux_fork/)
 
 ## Getting started
 
@@ -46,7 +46,7 @@ where:
     - `DataSource.recorder`: Captures audio from microphone/input
 - **`modelParams`**: Configure visualization behavior with type-specific parameters
 
-**Explore the interactive [web demo](https://marcobavagnoli.com/audio_flux/) to see how different parameters affect the visualizations in real-time.**
+**Explore the interactive [web demo](https://marcobavagnoli.com/audio_flux_fork/) to see how different parameters affect the visualizations in real-time.**
 
 **Note**: All shader examples except 'Dancing Flutter' are adapted from [Shadertoy](https://www.shadertoy.com/).
 
@@ -130,7 +130,7 @@ In the `example/shaders/common` folder you can find the `common_header.frag` fil
 #include <common/common_header.frag>
 
 // At least one `sampler2D` is a mandatory uniform you must declare. It is sent
-// by "audio_flux" and it represents the audio data.
+// by "audio_flux_fork" and it represents the audio data.
 // This texture is a matrix of 256x2 RGBA pixels representing:
 // in the 1st row the frequencies data
 // in the 2nd row the amplitudes data

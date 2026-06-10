@@ -1,4 +1,4 @@
-import 'package:audio_flux/audio_flux.dart';
+import 'package:audio_flux_fork/audio_flux_fork.dart';
 
 /// A list of available shaders.
 class Shaders {

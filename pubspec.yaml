@@ -1,12 +1,14 @@
-name: audio_flux
+name: audio_flux_fork
 description: >-
   Audio visualizer which uses flutter_soloud and
   flutter_recorder to acquire the audio data and
   display them using a CustomPainter or
   shader_buffer to render them to shaders.
+
+  Fork of audio_flux_fork.
 version: 1.2.2
-homepage: https://github.com/alnitak/audio_flux
-repository: https://github.com/alnitak/audio_flux
+homepage: https://github.com/thomashandlag/audio_flux_fork
+repository: https://github.com/thomashandlag/audio_flux_fork
 topics:
   - audio
   - visualizer
@@ -24,18 +26,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_recorder: ^1.1.2
-    # path: ../flutter_recorder
-  flutter_soloud: ^3.4.10
-    # path: ../flutter_soloud
-  shader_buffers: ^1.1.4
-    # path: ../shader_buffers
+  flutter_soloud: ^4.0.7
+  shader_buffers_fork: ^0.0.1
 
 dev_dependencies:
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
-
-  very_good_analysis: ^6.0.0
 
 flutter:

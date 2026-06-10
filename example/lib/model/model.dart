@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs
 
-import 'package:audio_flux/audio_flux.dart';
+import 'package:audio_flux_fork/audio_flux_fork.dart';
 import 'package:flutter/material.dart';
 
 /// The model to manage `AudioFlux` parameters.
 class AudioVisualizerModel extends ChangeNotifier {
   FluxType fluxType = FluxType.fft;
-  DataSources dataSource = DataSources.recorder;
+  DataSources dataSource = DataSources.soloud;
   ModelParams _modelParams = const ModelParams();
   FftParams _fftParams = const FftParams();
   FftPainterParams _fftPainterParams = const FftPainterParams();
@@ -25,7 +25,7 @@ class AudioVisualizerModel extends ChangeNotifier {
   }
 
   void updateDataSource({DataSources? source}) {
-    dataSource = source ?? DataSources.recorder;
+    dataSource = source ?? DataSources.soloud;
     notifyListeners();
   }
 

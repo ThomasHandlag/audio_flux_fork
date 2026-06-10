@@ -2,23 +2,18 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:audio_flux/src/painters/fft.dart';
-import 'package:audio_flux/src/painters/waveform.dart';
-import 'package:audio_flux/src/params/model_params.dart';
-import 'package:audio_flux/src/shaders/shader.dart';
+import 'package:audio_flux_fork/src/painters/fft.dart';
+import 'package:audio_flux_fork/src/painters/waveform.dart';
+import 'package:audio_flux_fork/src/params/model_params.dart';
+import 'package:audio_flux_fork/src/shaders/shader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_recorder/flutter_recorder.dart';
 import 'package:flutter_soloud/flutter_soloud.dart'
     show AudioData, GetSamplesKind, SoLoud;
 
 /// The source of the audio data.
 enum DataSources {
-  /// The audio data is acquired from flutter_soloud.
   soloud,
-
-  /// The audio data is acquired from flutter_recorder.
-  recorder,
 }
 
 /// The type of the visualizer.
@@ -74,7 +69,6 @@ class AudioFlux extends StatefulWidget {
 class _AudioFluxState extends State<AudioFlux>
     with SingleTickerProviderStateMixin {
   late final Ticker ticker;
-  final recorder = Recorder.instance;
   final soloud = SoLoud.instance;
   DataCallback? dataCallback;
   AudioData? audioData;
@@ -93,13 +87,6 @@ class _AudioFluxState extends State<AudioFlux>
           setupWidgetAndCallback();
         }
         srcInput.value = (isSoLoud: true, isRecording: false);
-      } else if (!srcInput.value.isRecording &&
-          widget.dataSource == DataSources.recorder &&
-          recorder.isDeviceInitialized()) {
-        if (visualizerWidget == null) {
-          setupWidgetAndCallback();
-        }
-        srcInput.value = (isSoLoud: false, isRecording: true);
       } else if (!srcInput.value.isRecording && !srcInput.value.isSoLoud) {
         visualizerWidget = null;
         srcInput.value = (isSoLoud: false, isRecording: false);
@@ -113,7 +100,6 @@ class _AudioFluxState extends State<AudioFlux>
     ticker.dispose();
     audioData?.dispose();
     soloud.deinit();
-    recorder.deinit();
     super.dispose();
   }
 
@@ -131,10 +117,6 @@ class _AudioFluxState extends State<AudioFlux>
         audioData = AudioData(GetSamplesKind.wave);
         dataCallback = ({bool alwaysReturnData = false}) =>
             audioData!.getAudioData(alwaysReturnData: alwaysReturnData);
-      case DataSources.recorder:
-        audioData?.dispose();
-        audioData = null;
-        dataCallback = Recorder.instance.getWave;
     }
   }
 
@@ -148,12 +130,6 @@ class _AudioFluxState extends State<AudioFlux>
             .setFftSmoothing(widget.modelParams.fftParams.fftSmoothing);
         dataCallback = ({bool alwaysReturnData = true}) =>
             audioData!.getAudioData(alwaysReturnData: alwaysReturnData);
-      case DataSources.recorder:
-        audioData?.dispose();
-        audioData = null;
-        Recorder.instance
-            .setFftSmoothing(widget.modelParams.fftParams.fftSmoothing);
-        dataCallback = Recorder.instance.getTexture;
     }
   }
 

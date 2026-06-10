@@ -2,7 +2,7 @@
 
 import 'dart:developer' as dev;
 
-import 'package:audio_flux/audio_flux.dart';
+import 'package:audio_flux_fork/audio_flux_fork.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
@@ -52,15 +52,15 @@ class _MainAppState extends State<MainApp> {
   Future<void> initSoLoud(String audioAsset) async {
     try {
       await soloud.init(bufferSize: 1024, channels: Channels.mono);
-      soloud.setVisualizationEnabled(true);
-
-      await soloud.play(
-        await soloud.loadAsset(
-          audioAsset,
-          mode: LoadMode.disk,
-        ),
-        looping: true,
-      );
+      soloud
+        ..setVisualizationEnabled(true)
+        ..play(
+          await soloud.loadAsset(
+            audioAsset,
+            mode: LoadMode.disk,
+          ),
+          looping: true,
+        );
     } on Exception catch (e) {
       debugPrint(e.toString());
     }

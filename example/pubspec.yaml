@@ -10,11 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_recorder: ^1.1.2
-    # path: ../flutter_recorder
-  flutter_soloud: 3.4.10
+  flutter_soloud: 4.0.7
     # path: ../flutter_soloud
-  audio_flux:
+  audio_flux_fork:
     path: ../
 
   logging: ^1.3.0

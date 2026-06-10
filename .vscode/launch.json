@@ -6,20 +6,20 @@
     "configurations": [
     
         {
-            "name": "audio_flux",
+            "name": "audio_flux_fork",
             "request": "launch",
             "program": "lib/main_extended.dart",
             "type": "dart",
             "cwd": "${workspaceFolder}/example"
         },
         {
-            "name": "audio_flux (profile mode)",
+            "name": "audio_flux_fork (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "audio_flux (release mode)",
+            "name": "audio_flux_fork (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

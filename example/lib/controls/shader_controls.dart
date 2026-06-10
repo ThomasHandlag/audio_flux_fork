@@ -1,4 +1,4 @@
-import 'package:audio_flux/audio_flux.dart';
+import 'package:audio_flux_fork/audio_flux_fork.dart';
 import 'package:example/controls/sliders.dart';
 import 'package:example/model/model.dart';
 import 'package:flutter/material.dart';

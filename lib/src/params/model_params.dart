@@ -1,5 +1,5 @@
-import 'package:audio_flux/audio_flux.dart';
-import 'package:audio_flux/src/utils/painter_data_manager.dart';
+import 'package:audio_flux_fork/audio_flux_fork.dart';
+import 'package:audio_flux_fork/src/utils/painter_data_manager.dart';
 import 'package:flutter/material.dart';
 
 /// The parameters used to configure the AudioFlux widget.

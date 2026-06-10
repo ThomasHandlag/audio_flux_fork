@@ -2,13 +2,12 @@
 
 import 'dart:developer' as dev;
 
-import 'package:audio_flux/audio_flux.dart';
+import 'package:audio_flux_fork/audio_flux_fork.dart';
 import 'package:example/controls/controls.dart';
 import 'package:example/model/model.dart';
 import 'package:example/shaders/shaders.dart';
 import 'package:flutter/foundation.dart' show defaultTargetPlatform, kDebugMode;
 import 'package:flutter/material.dart';
-import 'package:flutter_recorder/flutter_recorder.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:logging/logging.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -38,7 +37,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  final recorder = Recorder.instance;
   final soloud = SoLoud.instance;
 
   final AudioVisualizerModel model = AudioVisualizerModel();
@@ -136,13 +134,11 @@ class _MainAppState extends State<MainApp> {
   @override
   void dispose() {
     soloud.deinit();
-    recorder.deinit();
     super.dispose();
   }
 
   Future<void> initSoLoud(String audioAsset) async {
     try {
-      recorder.deinit();
       if (!soloud.isInitialized) {
         await soloud.init(bufferSize: 1024, channels: Channels.mono);
         soloud.setVisualizationEnabled(true);
@@ -150,7 +146,7 @@ class _MainAppState extends State<MainApp> {
         await soloud.disposeAllSources();
       }
 
-      await soloud.play(
+      soloud.play(
         await soloud.loadAsset(
           audioAsset,
           mode: LoadMode.disk,
@@ -162,23 +158,6 @@ class _MainAppState extends State<MainApp> {
     }
 
     model.updateDataSource(source: DataSources.soloud);
-  }
-
-  Future<void> initRecorder() async {
-    try {
-      soloud.deinit();
-
-      /// [PCMFormat.f32le] is required for getting audio data to work.
-      await recorder.init(
-        sampleRate: 44100,
-        format: PCMFormat.f32le,
-      );
-      recorder.start();
-    } on Exception catch (e) {
-      debugPrint(e.toString());
-    }
-
-    model.updateDataSource(source: DataSources.recorder);
   }
 
   @override
@@ -227,12 +206,6 @@ class _MainAppState extends State<MainApp> {
                           await initSoLoud('assets/audio/audiocheck.wav');
                         },
                         child: const Text('sweep'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await initRecorder();
-                        },
-                        child: const Text('recorder'),
                       ),
                     ],
                   ),

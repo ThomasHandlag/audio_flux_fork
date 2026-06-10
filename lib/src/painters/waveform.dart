@@ -1,7 +1,7 @@
 import 'dart:typed_data' show Float32List;
 
-import 'package:audio_flux/src/audio_flux.dart';
-import 'package:audio_flux/src/params/model_params.dart';
+import 'package:audio_flux_fork/src/audio_flux.dart';
+import 'package:audio_flux_fork/src/params/model_params.dart';
 import 'package:flutter/material.dart';
 
 /// Widget to draw the wave data.
