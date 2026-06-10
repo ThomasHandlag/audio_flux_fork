@@ -19,8 +19,8 @@ screenshots:
     path: img/shader.png
 
 environment:
-  sdk: ^3.6.2
-  flutter: ">=1.17.0"
+  sdk: ^3.11.1
+  flutter: ">=3.7.0"
 
 dependencies:
   flutter:
